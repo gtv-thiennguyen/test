@@ -3,6 +3,7 @@ name: Slack Notification on Issue and Project Board Event
 on:
   project_card:
     types:
+      - created
       - moved_columns_in_project
 
 jobs:
