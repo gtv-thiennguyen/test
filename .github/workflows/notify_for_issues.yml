@@ -15,21 +15,8 @@ jobs:
   slack_notification_a:
     runs-on: ubuntu-latest
     steps:
-      - name: Send Slack notification
+      - name: Send GitHub Action trigger data to Slack workflow
+        id: slack
+        uses: slackapi/slack-github-action@v1.24.0
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: |
-          curl -X POST -H 'Content-type: application/json' \
-            --data '{
-              "text": "A project card has been moved",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Card URL: ${{ github.event.project_card.url }}"
-                  }
-                }
-              ]
-            }' \
-            $SLACK_WEBHOOK_URL
