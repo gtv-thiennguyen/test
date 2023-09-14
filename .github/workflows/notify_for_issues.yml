@@ -1,9 +1,10 @@
 name: Slack Notification on Issue and Project Board Event
 
 on:
-  project_card:
+  project_column:
     types: 
-      - moved_columns_in_project
+      - created
+      - moved
 
 jobs:
   slack_notification:
@@ -18,7 +19,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "A <${{ github.event.project_card.url }}|project item> has been changed status"
+                    "text": "Column ${{ github.event.project_column.name }} has been changed status"
                   }
                 }
               ]
