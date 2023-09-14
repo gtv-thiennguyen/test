@@ -4,10 +4,9 @@ on:
   issues:
     types:
       - edited
-      - moved
   project_card:
     types:
-      - moved
+      - moved_columns_in_project
 
 jobs:
   slack_notification:
