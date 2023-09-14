@@ -1,0 +1,49 @@
+name: Slack Notification on Issue and Project Board Event
+
+on:
+  issues:
+    types:
+      - edited
+  project_card:
+    types:
+      - moved
+
+jobs:
+  slack_notification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack notification
+        run: |
+          # Check if the event is an issue event
+          if [ "${{ github.event_name }}" == "issues" ]; then
+            curl -X POST -H 'Content-type: application/json' \
+              --data '{
+                "blocks": [
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "<${{ github.event.issue.html_url }}|Issue #${{ github.event.issue.number }}> has been ${{ github.event.action }} by ${{ github.event.issue.user.login }}"
+                    }
+                  }
+                ]
+              }' \
+              https://hooks.slack.com/services/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
+          fi
+          
+          # Check if the event is a project card event
+          if [ "${{ github.event_name }}" == "project_card" ]; then
+            curl -X POST -H 'Content-type: application/json' \
+              --data '{
+                "blocks": [
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "A <${{ github.event.project_card.url }}|project item> has been changed status"
+                    }
+                  }
+                ]
+              }' \
+              https://hooks.slack.com/services/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
+          fi
