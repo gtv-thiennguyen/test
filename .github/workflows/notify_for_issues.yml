@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack notification
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           curl -X POST -H 'Content-type: application/json' \
             --data '{
@@ -24,4 +26,4 @@ jobs:
                 }
               ]
             }' \
-            https://hooks.slack.com/services/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
+            $SLACK_WEBHOOK_URL
