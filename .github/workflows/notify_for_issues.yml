@@ -1,9 +1,8 @@
-name: Slack Notification on Issue and Project Board Event
+name: Slack Notification on Project Card Move
 
 on:
   project_card:
-    types: 
-      - created
+    types:
       - moved
 
 jobs:
@@ -14,14 +13,15 @@ jobs:
         run: |
           curl -X POST -H 'Content-type: application/json' \
             --data '{
+              "text": "A project card has been moved",
               "blocks": [
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Column ${{ github.event.project_column.name }} has been changed status"
+                    "text": "Card URL: ${{ github.event.project_card.url }}"
                   }
                 }
               ]
             }' \
-            https://hooks.slack.com/services/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
+            https://hooks.slack.com/services/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
