@@ -23,12 +23,12 @@ jobs:
                     "type": "section",
                     "text": {
                       "type": "mrkdwn",
-                      "text": "<${{ github.event.issue.url }}|Issue #${{ github.event.issue.number }}> has been ${{ github.event.action }} by ${{ github.event.issue.user.login }}"
+                      "text": "<${{ github.event.issue.html_url }}|Issue #${{ github.event.issue.number }}> has been ${{ github.event.action }} by ${{ github.event.issue.user.login }}"
                     }
                   }
                 ]
               }' \
-              https://hooks.slack.com/services/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
+              https://hooks.slack.com/services/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
           fi
           
           # Check if the event is a project card event
@@ -45,5 +45,5 @@ jobs:
                   }
                 ]
               }' \
-              https://hooks.slack.com/services/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
+              https://hooks.slack.com/services/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
           fi
