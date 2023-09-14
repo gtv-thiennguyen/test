@@ -28,7 +28,7 @@ jobs:
                   }
                 ]
               }' \
-              https://hooks.slack.com/services/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
+              https://hooks.slack.com/services/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
           fi
           
           # Check if the event is a project card event
@@ -45,5 +45,5 @@ jobs:
                   }
                 ]
               }' \
-              https://hooks.slack.com/services/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
+              https://hooks.slack.com/services/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
           fi
