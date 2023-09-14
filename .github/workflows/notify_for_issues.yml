@@ -1,7 +1,7 @@
 name: Slack Notification on Issue and Project Board Event
 
 on:
-  project:
+  project_column:
     types:
       - created
       - edited
