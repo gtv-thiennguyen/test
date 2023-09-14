@@ -1,0 +1,18 @@
+name: 'Auto Author Assign'
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  assign-author:
+    runs-on: ubuntu-latest
+    steps:
+      # fixed to v1.5.0 for safety
+      # https://github.com/toshimaru/auto-author-assign/releases/tag/v1.5.0
+      - uses: toshimaru/auto-author-assign@2e0fdb731c6c01a37edd61fff1dee0e34d2f6961
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
