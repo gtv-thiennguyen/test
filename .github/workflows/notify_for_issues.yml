@@ -24,4 +24,4 @@ jobs:
                 }
               ]
             }' \
-            https://hooks.slack.com/services/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
+            https://hooks.slack.com/services/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
