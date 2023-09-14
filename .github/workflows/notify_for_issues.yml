@@ -1,11 +1,8 @@
 name: Slack Notification on Issue and Project Board Event
 
 on:
-  projects_v2_item:
-    types:
-      - created
-      - edited
-      - reordered
+  project_card:
+    types: [created, deleted, moved]
 
 jobs:
   slack_notification:
