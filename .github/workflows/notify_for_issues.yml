@@ -1,12 +1,18 @@
-name: Slack Notification on Project Card Move
+name: Slack Notification on Project Card Move A
 
 on:
   project_card:
     types:
+      - created
+      - edited
       - moved
+      - deleted
+
+permissions:
+  project_card: write
 
 jobs:
-  slack_notification:
+  slack_notification_a:
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack notification
